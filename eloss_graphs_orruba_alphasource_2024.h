@@ -55,7 +55,7 @@ TVector3 geom_orruba(int clkpos=4, int stripnum=2, std::string layer="dEu", floa
     phi = (TMath::Pi()/6.)*(3-clkpos); //awkward 90deg bend to line things up right
 
     float deltaphi =  std::atan(yoffset/vradius);
-    phi+=deltaphi;
+    phi-=deltaphi;
     radius = std::sqrt(vradius*vradius + yoffset*yoffset);
 
     //sx3_position.SetPerp(radius);
@@ -191,7 +191,7 @@ TVector3 geom_orruba_eds(int clkpos=4, int stripnum=2, std::string layer="Eds", 
 
     z= -1.0*(target_to_sx3_0+z); //+ve sign because upstream sx3s are in +ve z axis 
     std::cout <<" --> " << clkpos << " " << stripnum << " " << z << std::endl;
-    phi = (2*TMath::Pi()/12.)*((clkpos+4)%12);
+    phi = (TMath::Pi()/6.)*(3-clkpos); //awkward 90deg bend to line things up right
     float deltaphi =  std::atan(yoffset/vradius);
     phi+=deltaphi;
     radius = std::sqrt(vradius*vradius + yoffset*yoffset);

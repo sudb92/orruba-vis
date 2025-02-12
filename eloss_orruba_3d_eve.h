@@ -39,7 +39,7 @@ TVector3 geom_orruba(int clkpos=4, int stripnum=2, std::string layer="dEu", floa
     phi = (TMath::Pi()/6.)*(3-clkpos); //awkward 90deg bend to line things up right
 
     float deltaphi =  std::atan(yoffset/vradius);
-    phi+=deltaphi;
+    phi-=deltaphi;
     radius = std::sqrt(vradius*vradius + yoffset*yoffset);
     sx3_position.SetXYZ(radius*cos(phi), radius*sin(phi), z);
 
@@ -236,7 +236,7 @@ void eloss_orruba_3d_eve() {
     a2->SetPickable(kTRUE);
 
     //A few test arrows
-    TVector3 vec0 = geom_orruba_eds(5,0,"Eds",75.*mm), vec1, vec2=geom_orruba_eds(5,0,"Eds",0.);
+    TVector3 vec0 = geom_orruba(0,0,"dEu",75.*mm), vec1, vec2=geom_orruba(0,0,"dEu",0.);
     std::cout << "Vec0 theta (deg): " << 180-vec0.Theta()*180./M_PI << " Vec0 phi (deg):" <<  vec0.Phi()*180./M_PI << std::endl;
     std::cout << "Vec2 theta (deg): " << 180-vec2.Theta()*180./M_PI << " Vec2 phi (deg):" <<  vec2.Phi()*180./M_PI << std::endl;
     vec1.SetMagThetaPhi(0.2,130.*M_PI/180.,240.*M_PI/180.);
